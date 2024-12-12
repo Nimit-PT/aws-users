@@ -36,7 +36,7 @@ const UserForm: React.FC = () => {
   // Function to fetch all users
   const fetchUsers = async () => {
     try {
-      const response = await fetch("http://localhost:3001/user");
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user`);
       if (response.ok) {
         const data = await response.json();
         setUsers(data);
@@ -52,7 +52,7 @@ const UserForm: React.FC = () => {
   const onSubmit = async (data: UserFormDataType) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch("http://localhost:3001/user", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -93,7 +93,7 @@ const UserForm: React.FC = () => {
   // Delete user function (placeholder - implement actual deletion logic)
   const deleteUser = async (userId: string) => {
     try {
-      const response = await fetch(`http://localhost:3001/user/${userId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/${userId}`, {
         method: "DELETE",
       });
 
