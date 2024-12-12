@@ -44,6 +44,7 @@ const UserForm: React.FC = () => {
         toast.error("Failed to fetch users");
       }
     } catch (error) {
+      console.error(error);
       toast.error("Error fetching users");
     }
   };
@@ -69,6 +70,8 @@ const UserForm: React.FC = () => {
         toast.error(errorData.message || "Failed to submit user");
       }
     } catch (error) {
+      console.error(error);
+
       toast.error("Error submitting user");
     } finally {
       setIsSubmitting(false);
@@ -101,6 +104,7 @@ const UserForm: React.FC = () => {
         toast.error("Failed to delete user");
       }
     } catch (error) {
+      console.error(error);
       toast.error("Error deleting user");
     }
   };
@@ -198,9 +202,9 @@ const UserForm: React.FC = () => {
                 {errors.address && <p className="text-red-500 text-xs mt-1">{errors.address.message}</p>}
               </div>
 
-              <Button type="submit" className="w-full mt-4 flex items-center justify-center gap-2">
+              <Button disabled={isSubmitting} type="submit" className="w-full mt-4 flex items-center justify-center gap-2">
                 <UserPlus className="w-5 h-5" />
-                Submit User
+                {isSubmitting ? "Submitting User..." : "Submit User"}
               </Button>
             </form>
           </CardContent>
