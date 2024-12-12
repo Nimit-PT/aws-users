@@ -13,8 +13,8 @@ export const AppDataSource = new DataSource({
   username: POSTGRES_USER,
   password: POSTGRES_PASSWORD,
   database: POSTGRES_DATABASE,
-  entities: ["./src/entities/**/*{.ts,.js}"],
+  entities: [process.env.NODE_ENV === "production" ? "./dist/entities/**/*{.js,.ts}" : "./src/entities/**/*{.ts,.js}"],
+  migrations: [process.env.NODE_ENV === "production" ? "./dist/migrations/*{.js,.ts}" : "./src/migrations/*{.ts,.js}"],
   synchronize: false,
-  migrations: ["./src/migrations/*{.ts,.js}"],
   logging: ["query", "error"],
 });
