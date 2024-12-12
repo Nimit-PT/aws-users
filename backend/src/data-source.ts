@@ -5,10 +5,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const { POSTGRES_HOST, POSTGRES_PORT, POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DATABASE } = process.env;
-console.log("🚀 ~ POSTGRES_PASSWORD:", POSTGRES_PASSWORD);
-console.log("🚀 ~ POSTGRES_USER:", POSTGRES_USER);
-console.log("🚀 ~ POSTGRES_PORT:", POSTGRES_PORT);
-console.log("🚀 ~ POSTGRES_HOST:", POSTGRES_HOST);
 
 export const AppDataSource = new DataSource({
   type: "postgres",
