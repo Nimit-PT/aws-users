@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 4000;
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "ec2-3-219-73-233.compute-1.amazonaws.com"],
     methods: "GET,POST,PUT,DELETE,PATCH",
     credentials: true,
   })
